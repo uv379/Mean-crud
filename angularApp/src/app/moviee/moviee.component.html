@@ -1,0 +1,106 @@
+<div class="container py-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Movie List</h2>
+        </div>
+            
+        <div class="col ml-auto text-right">
+            <button type="button" class="btn btn-outline-success"
+            (click)="onAddmovie()">
+                <i class="fa fa-plus"></i> Add Movie
+            </button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a routerLink="movie/singleMovie" class="card-title">The Avengers</a>
+                    <h6 class="card-subtitle mb-2 text-muted">April 11, 2012</h6>
+                    <span class="badge badge-danger">Action movie</span>
+                    <hr>
+                    <button type="button" class="btn btn-sm btn-outline-primary mr-2"
+                        (click)="onEditMovie()">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a routerLink="movie/singleMovie" class="card-title">The Avengers</a>
+                    <h6 class="card-subtitle mb-2 text-muted">April 11, 2012</h6>
+                    <span class="badge badge-danger">Action movie</span>
+                    <hr>
+                    <button type="button" class="btn btn-sm btn-outline-primary mr-2"
+                        (click)="onEditMovie()">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <a routerLink="movie/singleMovie" class="card-title">The Avengers</a>
+                    <h6 class="card-subtitle mb-2 text-muted">April 11, 2012</h6>
+                    <span class="badge badge-danger">Action movie</span>
+                    <hr>
+                    <button type="button" class="btn btn-sm btn-outline-primary mr-2"
+                        (click)="onEditMovie()">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger">Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade show" [class.show]="showModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">{{editMode? 'Update' :'Add'}} Movie</h5>
+            <button (click)="onCloseModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        
+        <form [FormGroup]="movForm" (ngSubmit)="onMovSubmit()"> 
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Enter Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <small *ngIf="!movForm.get('name').valid && movForm.get('name').touched" class="form-text text-danger">Please Enter Name.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Enter position</label>
+                    <input type="text" class="form-control" formControlName="position">
+                    <small *ngIf="!movForm.get('position').valid && movForm.get('position').touched" class="form-text text-danger">Please Enter position.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label>Enter Department</label>
+                    
+                    <select class="custom-select" formControlName="dept">
+                        <option value="Design">Design</option>
+                        <option value="Development">Development</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="onCloseModal()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">
+                    {{editMode? 'Update Movie' :'Add Movie'}}
+                </button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
